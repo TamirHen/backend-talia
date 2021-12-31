@@ -1,0 +1,12 @@
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyBju_GUG_SCO2JHh1M_aYL8kjByJCvY064",
+    "authDomain": "talia-breuer.firebaseapp.com",
+    "databaseURL": "https://talia-breuer-default-rtdb.firebaseio.com",
+    "projectId": "talia-breuer",
+    "storageBucket": "talia-breuer.appspot.com",
+    "messagingSenderId": "497277188713",
+    "appId": "1:497277188713:web:447d9bae788b1d84ca80f8",
+    "measurementId": "G-RM0QXTL29J"
+  }
+}
