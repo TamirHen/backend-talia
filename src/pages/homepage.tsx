@@ -7,6 +7,7 @@ import BreakPoints from '../components/breakPoints'
 import FooterText from '../components/footerText'
 import HeaderLinks from '../components/headerLinks'
 import SocialMedia from '../components/socialMedia'
+import Subtitle from '../components/subtitle'
 
 const Homepage = () => {
   const { database } = useContext(DataContext)
@@ -28,6 +29,7 @@ const Homepage = () => {
           <Route path={'/footerText'} element={<FooterText />} />
           <Route path={'/headerLinks'} element={<HeaderLinks />} />
           <Route path={'/socialMedia'} element={<SocialMedia />} />
+          <Route path={'/subtitle'} element={<Subtitle />} />
         </Routes>
       </section>
     </div>

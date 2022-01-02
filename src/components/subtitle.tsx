@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react'
-import '../assets/styles/components/footerText.scss'
+import '../assets/styles/components/subtitle.scss'
 import { DataContext } from '../providers/DataProvider'
 import { updateDB } from '../utils/firebase/Firebase'
 
-interface FooterTextTarget {
-  footerText: { value: string }
+interface SubtitleTarget {
+  subtitle: { value: string }
 }
 
-const FooterText = () => {
+const Subtitle = () => {
   const {
-    database: { footerText },
+    database: { subtitle },
   } = useContext(DataContext)
 
   const [message, setMessage] = useState<string>()
@@ -17,19 +17,16 @@ const FooterText = () => {
   const onSubmitHandler = async (event: React.SyntheticEvent) => {
     setMessage(undefined)
     event.preventDefault()
-    const target = event.target as typeof event.target & FooterTextTarget
+    const target = event.target as typeof event.target & SubtitleTarget
 
-    const message = await updateDB(
-      '/footerText',
-      target.footerText.value.trim()
-    )
+    const message = await updateDB('/subtitle', target.subtitle.value.trim())
     setMessage(message)
   }
 
   return (
-    <form className={'footer-text-form'} onSubmit={onSubmitHandler}>
-      <h4 className={'form-header'}>Footer Text</h4>
-      {<textarea name='footerText' defaultValue={footerText || ''} />}
+    <form className={'subtitle-form'} onSubmit={onSubmitHandler}>
+      <h4 className={'form-header'}>Subtitle</h4>
+      {<input name='subtitle' defaultValue={subtitle || ''} />}
       <button className={'update-button'} type={'submit'}>
         Save
       </button>
@@ -45,4 +42,4 @@ const FooterText = () => {
   )
 }
 
-export default FooterText
+export default Subtitle

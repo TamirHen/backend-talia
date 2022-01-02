@@ -46,7 +46,7 @@ const HeaderLinks = () => {
 
       <Container cards={headerLinks} setCardsNewOrder={setCardsArrayNewOrder} />
       <button className={'update-button'} type={'submit'}>
-        Update
+        Save
       </button>
       {message && (
         <p

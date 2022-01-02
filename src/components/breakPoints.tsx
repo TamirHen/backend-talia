@@ -55,7 +55,7 @@ const BreakPoints = () => {
           ))}
       </ul>
       <button className={'update-button'} type={'submit'}>
-        Update
+        Save
       </button>
       {message && (
         <p
