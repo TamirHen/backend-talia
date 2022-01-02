@@ -1,0 +1,10 @@
+.cubes-container {
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+
+  .cubes-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

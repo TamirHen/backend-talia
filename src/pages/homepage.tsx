@@ -8,6 +8,7 @@ import FooterText from '../components/footerText'
 import HeaderLinks from '../components/headerLinks'
 import SocialMedia from '../components/socialMedia'
 import Subtitle from '../components/subtitle'
+import Cubes from '../components/cubes'
 
 const Homepage = () => {
   const { database } = useContext(DataContext)
@@ -26,6 +27,7 @@ const Homepage = () => {
       <section className={'inline-settings'}>
         <Routes>
           <Route path={'/breakPoints'} element={<BreakPoints />} />
+          <Route path={'/cubes'} element={<Cubes />} />
           <Route path={'/footerText'} element={<FooterText />} />
           <Route path={'/headerLinks'} element={<HeaderLinks />} />
           <Route path={'/socialMedia'} element={<SocialMedia />} />

@@ -1,6 +1,4 @@
 export interface Cube {
-  description: string
-  genre: string
   id: number
   image: string
   name: string
