@@ -1,0 +1,42 @@
+@use 'mixin';
+@use 'global-vars';
+
+.page-container {
+  margin-top: 120px;
+  @include mixin.flex-center;
+  flex-direction: column;
+
+  .inline-settings {
+    margin-top: 60px;
+  }
+
+  section {
+
+    .page-title {
+      margin-bottom: 50px;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .form-header {
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    .page-list {
+      display: flex;
+
+      a {
+        margin: 5px;
+        padding: 10px;
+        font-size: 24px;
+
+        &:active {
+          color: global-vars.$blue;
+        }
+      }
+    }
+
+  }
+}
+

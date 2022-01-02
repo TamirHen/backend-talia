@@ -1,0 +1,15 @@
+@use "../mixin";
+.login-container {
+  height: 100vh;
+  @include mixin.flex-center;
+  flex-direction: column;
+
+  .login-title {
+    margin-bottom: 25px;
+  }
+
+  .login-button {
+    padding: 10px 30px;
+    font-size: 24px;
+  }
+}

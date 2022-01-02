@@ -1,125 +1,125 @@
 export interface Cube {
-  description: string;
-  genre: string;
-  id: number;
-  image: string;
-  name: string;
+  description: string
+  genre: string
+  id: number
+  image: string
+  name: string
 }
 
 export interface BreakPoints {
-  menu: string;
-  mobile: string;
-  tablet: string;
+  menu: string
+  mobile: string
+  tablet: string
 }
 
 export interface SocialMedia {
-  behance: string;
-  dribble: string;
-  instagram: string;
-  linkedin: string;
-  vimeo: string;
-  whatsapp: string;
+  behance: string
+  dribble: string
+  instagram: string
+  linkedin: string
+  vimeo: string
+  whatsapp: string
 }
 
 export interface Grid {
-  columns: number;
-  mobile: { columns: number; rows: number };
-  rows: number;
-  tablet: { columns: number; rows: number };
+  columns: number
+  mobile: { columns: number; rows: number }
+  rows: number
+  tablet: { columns: number; rows: number }
 }
 
 export interface Image {
-  columnEnd: number;
-  columnStart: number;
-  cubeId: number;
+  columnEnd: number
+  columnStart: number
+  cubeId: number
   mobile: {
-    columnEnd: number;
-    columnStart: number;
-    rowEnd: number;
-    rowStart: number;
-  };
-  rowEnd: number;
-  rowStart: number;
+    columnEnd: number
+    columnStart: number
+    rowEnd: number
+    rowStart: number
+  }
+  rowEnd: number
+  rowStart: number
   tablet: {
-    columnEnd: number;
-    columnStart: number;
-    rowEnd: number;
-    rowStart: number;
-  };
+    columnEnd: number
+    columnStart: number
+    rowEnd: number
+    rowStart: number
+  }
 }
 
 export interface ProjectPage {
-  description: string;
-  grid: Grid;
-  images: [Image];
-  subtitle: string;
+  description: string
+  grid: Grid
+  images: [Image]
+  subtitle: string
 }
 
 export interface Video {
-  projectPage: ProjectPage;
-  title: string;
-  videoId: number;
+  projectPage: ProjectPage
+  title: string
+  videoId: number
 }
 
 export interface Contact {
-  text: string;
-  title: string;
+  text: string
+  title: string
 }
 
 export interface Pages {
-  about: About;
+  about: About
   animation: {
-    videos: [Video];
-  };
-  contact: Contact;
+    videos: [Video]
+  }
+  contact: Contact
   demoReel: {
-    videoHeight: number;
-    videoId: number;
-  };
+    videoHeight: number
+    videoId: number
+  }
   home: {
-    animationImage: string;
-    grid: Grid;
-    images: [Image];
-    riggingImage: string;
-    sketchesImage: string;
-  };
+    animationImage: string
+    grid: Grid
+    images: [Image]
+    riggingImage: string
+    sketchesImage: string
+  }
   rigging: {
-    videos: [Video];
-  };
+    videos: [Video]
+  }
   sketches: {
-    grid: Grid;
-    images: [Image];
-  };
+    grid: Grid
+    images: [Image]
+  }
 }
 
 export interface About {
-  cv: string;
-  description: string;
-  subtitle: string;
-  title: string;
+  cv: string
+  description: string
+  subtitle: string
+  title: string
 }
 
 export interface HeaderLink {
-  name: string;
-  order: number;
+  name: string
+  order: number
 }
 
 export interface HeaderLinks {
-  about: HeaderLink;
-  animation: HeaderLink;
-  contact: HeaderLink;
-  demoReel: HeaderLink;
-  rigging: HeaderLink;
-  sketches: HeaderLink;
+  about: HeaderLink
+  animation: HeaderLink
+  contact: HeaderLink
+  demoReel: HeaderLink
+  rigging: HeaderLink
+  sketches: HeaderLink
 }
 
 export interface Database {
-  breakPoints?: BreakPoints;
-  cubes?: [Cube];
-  footerText: string;
-  headerLinks?: HeaderLinks;
-  pages?: Pages;
-  socialMedia?: SocialMedia;
-  subtitle: string;
-  title: string;
+  breakPoints: BreakPoints
+  cubes?: [Cube]
+  footerText: string
+  headerLinks?: HeaderLinks
+  pages?: Pages
+  socialMedia?: SocialMedia
+  subtitle: string
+  title: string
 }

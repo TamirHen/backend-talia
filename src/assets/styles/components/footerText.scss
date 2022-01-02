@@ -1,0 +1,12 @@
+.footer-text-form {
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    width: 350px;
+    height: 200px;
+    font-size: 18px;
+    padding: 5px;
+  }
+}
