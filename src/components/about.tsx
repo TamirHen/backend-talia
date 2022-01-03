@@ -30,22 +30,18 @@ const About = () => {
     setMessage(undefined)
     event.preventDefault()
     const target = event.target as typeof event.target & AboutTarget
-    if (!CVFile) {
-      setMessage('Could not find file to upload')
-      return
-    }
-    const snapshot = await uploadImage('CV', CVFile, 'CV- Talia Breuer')
-    const fileURL = await snapshot.ref.getDownloadURL()
 
-    if (!fileURL) {
-      setMessage('Could not upload file, please try again')
-      return
-    }
+    let fileURL
     const newSettings: AboutInterface = {
       title: target.title.value.trim(),
       subtitle: target.subtitle.value.trim(),
       description: target.description.value.trim(),
-      cv: fileURL,
+      cv: about.cv,
+    }
+    if (CVFile) {
+      const snapshot = await uploadImage('CV', CVFile, 'CV- Talia Breuer')
+      fileURL = await snapshot.ref.getDownloadURL()
+      newSettings.cv = fileURL
     }
 
     const message = await updateDB('pages/about', newSettings)
@@ -61,10 +57,9 @@ const About = () => {
       <input name={'subtitle'} defaultValue={about.subtitle || ''} />
       <label htmlFor='description'>Description</label>
       <textarea name='description' defaultValue={about.description || ''} />
-      <label htmlFor={'file'} className='required'>{`CV File:`}</label>
+      <label htmlFor={'file'}>{`CV File:`}</label>
       <input
         onChange={onCVUploadHandler}
-        required
         type='file'
         name='file'
         className={'upload-cv-file'}

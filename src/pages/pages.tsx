@@ -7,6 +7,7 @@ import About from '../components/about'
 import Contact from '../components/contact'
 import DemoReel from '../components/demoReel'
 import Home from '../components/home'
+import Sketches from '../components/sketches'
 
 const Pages = () => {
   const {
@@ -35,6 +36,7 @@ const Pages = () => {
           <Route path={'/contact'} element={<Contact />} />
           <Route path={'/demoReel'} element={<DemoReel />} />
           <Route path={'/home'} element={<Home />} />
+          <Route path={'/sketches'} element={<Sketches />} />
         </Routes>
       </section>
     </div>

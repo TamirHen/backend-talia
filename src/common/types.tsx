@@ -19,37 +19,35 @@ export interface SocialMedia {
   whatsapp: string
 }
 
-export interface Grid {
+export interface GridLayout {
   columns: number
-  mobile: { columns: number; rows: number }
   rows: number
-  tablet: { columns: number; rows: number }
+}
+
+export interface Grid {
+  desktop: GridLayout
+  tablet: GridLayout
+  mobile: GridLayout
+}
+
+export interface ImagePosition {
+  columnEnd: number
+  columnStart: number
+  rowEnd: number
+  rowStart: number
 }
 
 export interface Image {
-  columnEnd: number
-  columnStart: number
-  cubeId: number
-  mobile: {
-    columnEnd: number
-    columnStart: number
-    rowEnd: number
-    rowStart: number
-  }
-  rowEnd: number
-  rowStart: number
-  tablet: {
-    columnEnd: number
-    columnStart: number
-    rowEnd: number
-    rowStart: number
-  }
+  cubeId: string
+  desktop: ImagePosition
+  tablet: ImagePosition
+  mobile: ImagePosition
 }
 
 export interface ProjectPage {
   description: string
   grid: Grid
-  images: [Image]
+  images: Image[]
   subtitle: string
 }
 
@@ -77,17 +75,17 @@ export interface Home {
 export interface Pages {
   about: About
   animation?: {
-    videos: [Video]
+    videos: Video[]
   }
   contact: Contact
   demoReel: DemoReel
   home: Home
   rigging?: {
-    videos: [Video]
+    videos: Video[]
   }
-  sketches?: {
+  sketches: {
     grid: Grid
-    images: [Image]
+    images: Image[]
   }
 }
 
@@ -114,11 +112,11 @@ export interface HeaderLinks {
 
 export interface Database {
   breakPoints: BreakPoints
-  cubes?: [Cube]
+  cubes: Cube[]
   footerText: string
-  headerLinks?: HeaderLinks
+  headerLinks: HeaderLinks
   pages: Pages
-  socialMedia?: SocialMedia
+  socialMedia: SocialMedia
   subtitle: string
   title: string
 }

@@ -9,6 +9,13 @@ const defaultState = {
       mobile: '',
       tablet: '',
     },
+    cubes: [
+      {
+        id: '',
+        image: '',
+        name: '',
+      },
+    ],
     pages: {
       about: {
         title: '',
@@ -28,8 +35,72 @@ const defaultState = {
         riggingImage: '',
         sketchesImage: '',
       },
+      sketches: {
+        grid: {
+          desktop: { rows: 0, columns: 0 },
+          tablet: { rows: 0, columns: 0 },
+          mobile: { rows: 0, columns: 0 },
+        },
+        images: [
+          {
+            cubeId: '',
+            desktop: {
+              columnEnd: 0,
+              columnStart: 0,
+              rowEnd: 0,
+              rowStart: 0,
+            },
+            tablet: {
+              columnEnd: 0,
+              columnStart: 0,
+              rowEnd: 0,
+              rowStart: 0,
+            },
+            mobile: {
+              columnEnd: 0,
+              columnStart: 0,
+              rowEnd: 0,
+              rowStart: 0,
+            },
+          },
+        ],
+      },
     },
     footerText: '',
+    headerLinks: {
+      about: {
+        name: '',
+        order: 0,
+      },
+      animation: {
+        name: '',
+        order: 0,
+      },
+      contact: {
+        name: '',
+        order: 0,
+      },
+      demoReel: {
+        name: '',
+        order: 0,
+      },
+      rigging: {
+        name: '',
+        order: 0,
+      },
+      sketches: {
+        name: '',
+        order: 0,
+      },
+    },
+    socialMedia: {
+      behance: '',
+      dribble: '',
+      instagram: '',
+      linkedin: '',
+      vimeo: '',
+      whatsapp: '',
+    },
     subtitle: '',
     title: '',
   },
