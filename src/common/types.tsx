@@ -65,8 +65,7 @@ export interface Contact {
 }
 
 export interface DemoReel {
-  videoHeight: number
-  videoId: number
+  videoId: string
 }
 
 export interface Pages {

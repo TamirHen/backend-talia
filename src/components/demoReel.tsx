@@ -5,8 +5,7 @@ import { updateDB } from '../utils/firebase/Firebase'
 import { DemoReel as DemoReelInterface } from '../common/types'
 
 interface DemoReelTarget {
-  title: { value: string }
-  text: { value: string }
+  videoId: { value: string }
 }
 
 const DemoReel = () => {
@@ -23,20 +22,17 @@ const DemoReel = () => {
     event.preventDefault()
     const target = event.target as typeof event.target & DemoReelTarget
     const newSettings: DemoReelInterface = {
-      title: target.title.value.trim(),
-      text: target.text.value.trim(),
+      videoId: target.videoId.value.trim(),
     }
     const message = await updateDB('pages/demoReel', newSettings)
     setMessage(message)
   }
 
   return (
-    <form className={'demoReel-form'} onSubmit={onSubmitHandler}>
-      <h4 className={'form-header'}>DemoReel</h4>
-      <label htmlFor='title'>Title</label>
-      <input name='title' defaultValue={demoReel.title || ''} />
-      <label htmlFor='text'>Text</label>
-      <input name='text' defaultValue={demoReel.text || ''} />
+    <form className={'demo-reel-form'} onSubmit={onSubmitHandler}>
+      <h4 className={'form-header'}>Demo Reel</h4>
+      <label htmlFor='videoId'>Video ID</label>
+      <input name='videoId' defaultValue={demoReel.videoId || ''} />
       <button className={'update-button'} type={'submit'}>
         Save
       </button>

@@ -21,8 +21,7 @@ const defaultState = {
         text: '',
       },
       demoReel: {
-        videoHeight: 0,
-        videoId: 0,
+        videoId: '',
       },
     },
     footerText: '',
