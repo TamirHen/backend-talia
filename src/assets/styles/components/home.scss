@@ -1,0 +1,21 @@
+.home-form {
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  input {
+    font-size: 22px;
+  }
+
+  .upload-image-file {
+    font-size: initial;
+    padding: 7px 5px;
+  }
+
+}

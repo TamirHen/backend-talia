@@ -6,6 +6,7 @@ import '../assets/styles/pages/pages.scss'
 import About from '../components/about'
 import Contact from '../components/contact'
 import DemoReel from '../components/demoReel'
+import Home from '../components/home'
 
 const Pages = () => {
   const {
@@ -33,6 +34,7 @@ const Pages = () => {
           <Route path={'/about'} element={<About />} />
           <Route path={'/contact'} element={<Contact />} />
           <Route path={'/demoReel'} element={<DemoReel />} />
+          <Route path={'/home'} element={<Home />} />
         </Routes>
       </section>
     </div>

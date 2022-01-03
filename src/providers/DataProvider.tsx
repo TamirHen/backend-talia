@@ -23,6 +23,11 @@ const defaultState = {
       demoReel: {
         videoId: '',
       },
+      home: {
+        animationImage: '',
+        riggingImage: '',
+        sketchesImage: '',
+      },
     },
     footerText: '',
     subtitle: '',

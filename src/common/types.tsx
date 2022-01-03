@@ -68,6 +68,12 @@ export interface DemoReel {
   videoId: string
 }
 
+export interface Home {
+  animationImage: string
+  riggingImage: string
+  sketchesImage: string
+}
+
 export interface Pages {
   about: About
   animation?: {
@@ -75,13 +81,7 @@ export interface Pages {
   }
   contact: Contact
   demoReel: DemoReel
-  home?: {
-    animationImage: string
-    grid: Grid
-    images: [Image]
-    riggingImage: string
-    sketchesImage: string
-  }
+  home: Home
   rigging?: {
     videos: [Video]
   }
