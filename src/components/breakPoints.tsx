@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import '../assets/styles/components/breakPoints.scss'
 import { DataContext } from '../providers/DataProvider'
@@ -18,7 +18,9 @@ const BreakPoints = () => {
 
   const [message, setMessage] = useState<string>()
 
-  const onSubmitHandler = async (event: React.SyntheticEvent) => {
+  const onSubmitHandler = async (
+    event: React.SyntheticEvent
+  ): Promise<void> => {
     setMessage(undefined)
     event.preventDefault()
     const target = event.target as typeof event.target & BreakPointsTarget

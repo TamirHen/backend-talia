@@ -1,7 +1,9 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/storage'
 import 'firebase/auth'
 import configData from './config.json'
+import UploadTask = firebase.storage.UploadTask
 
 const { firebaseConfig } = configData
 firebase.initializeApp(firebaseConfig)
@@ -26,4 +28,26 @@ export const updateDB = async (
       return error.message
     })
   return error || 'saved'
+}
+
+export const uploadImage = async (
+  path: string,
+  image: File,
+  fileName?: string
+): Promise<UploadTask> => {
+  const uploadTask = firebase
+    .storage()
+    .ref(`${path}/${fileName || image.name}`)
+    .put(image)
+  uploadTask.on(
+    firebase.storage.TaskEvent.STATE_CHANGED,
+    (snapshot) => {},
+    (error) => {
+      console.error(error)
+    },
+    () => {
+      console.log('file uploaded successfully')
+    }
+  )
+  return uploadTask
 }

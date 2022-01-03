@@ -1,15 +1,16 @@
 @use "../global-vars";
+
 .cube-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 300px;
-  padding: 15px;
-  margin: 20px;
-  border-radius: 3px;
-  border: 1px solid global-vars.$purple;
+  width: global-vars.$cube-size;
+  height: global-vars.$cube-size;
+  padding: global-vars.$cube-padding;
+  margin: global-vars.$cube-margin;
+  border-radius: global-vars.$cube-border-radius;
+  border: global-vars.$cube-border;
   justify-content: space-between;
-  background-size: contain;
+  background-size: cover;
 
   .cube-header {
     font-size: 24px;
@@ -17,7 +18,9 @@
 
   label {
     font-weight: 500;
+
   }
+
   button {
     background: rgba(white, .8);
   }
@@ -26,5 +29,15 @@
     font-size: 18px;
     width: -webkit-fill-available;
     background: rgba(white, .8);
+
+  }
+
+  .id-input {
+    font-size: 13px;
+  }
+
+  .message {
+    font-size: 13px;
+    align-self: flex-start;
   }
 }

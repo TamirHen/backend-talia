@@ -21,7 +21,7 @@ const HeaderLinks = () => {
       setMessage('There was no change in the order')
       return
     }
-    let newHeaderLinks: { [index: string]: any } = {}
+    const newHeaderLinks: { [index: string]: any } = {}
     let counter = 1
     for (const card of cardsArrayNewOrder) {
       let property = card.name

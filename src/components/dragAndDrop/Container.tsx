@@ -18,7 +18,7 @@ export const Container: FC<ContainerProps> = (props) => {
   if (!cardsInitState)
     return <p className={'message'}>Error! Could not load Cards</p>
   const cardsAsArray = Object.keys(cardsInitState).map(
-    (key, index) => cardsInitState[key as keyof HeaderLinks]
+    (key) => cardsInitState[key as keyof HeaderLinks]
   )
   {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -50,7 +50,7 @@ export const Container: FC<ContainerProps> = (props) => {
       [cards]
     )
 
-    const renderCard = (card: HeaderLink, index: number) => {
+    const renderCard = (card: HeaderLink, index: number): JSX.Element => {
       return (
         <Card
           key={uuid()}

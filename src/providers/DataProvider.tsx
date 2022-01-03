@@ -9,6 +9,22 @@ const defaultState = {
       mobile: '',
       tablet: '',
     },
+    pages: {
+      about: {
+        title: '',
+        subtitle: '',
+        description: '',
+        cv: '',
+      },
+      contact: {
+        title: '',
+        text: '',
+      },
+      demoReel: {
+        videoHeight: 0,
+        videoId: 0,
+      },
+    },
     footerText: '',
     subtitle: '',
     title: '',

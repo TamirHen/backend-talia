@@ -14,7 +14,7 @@ function App() {
       {user ? (
         <Routes>
           <Route path={'/*'} element={<Homepage />} />
-          <Route path={'/pages'} element={<Pages />} />
+          <Route path={'/pages/*'} element={<Pages />} />
         </Routes>
       ) : (
         <Routes>

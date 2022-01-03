@@ -1,7 +1,11 @@
-.subtitle-form {
-  font-size: 26px;
+.contact-form {
+  font-size: 22px;
   display: flex;
   flex-direction: column;
+
+  label {
+    margin-top: 5px;
+  }
 
   input {
     width: 300px;

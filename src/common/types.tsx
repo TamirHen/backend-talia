@@ -1,5 +1,5 @@
 export interface Cube {
-  id: number
+  id: string
   image: string
   name: string
 }
@@ -64,27 +64,29 @@ export interface Contact {
   title: string
 }
 
+export interface DemoReel {
+  videoHeight: number
+  videoId: number
+}
+
 export interface Pages {
   about: About
-  animation: {
+  animation?: {
     videos: [Video]
   }
   contact: Contact
-  demoReel: {
-    videoHeight: number
-    videoId: number
-  }
-  home: {
+  demoReel: DemoReel
+  home?: {
     animationImage: string
     grid: Grid
     images: [Image]
     riggingImage: string
     sketchesImage: string
   }
-  rigging: {
+  rigging?: {
     videos: [Video]
   }
-  sketches: {
+  sketches?: {
     grid: Grid
     images: [Image]
   }
@@ -116,7 +118,7 @@ export interface Database {
   cubes?: [Cube]
   footerText: string
   headerLinks?: HeaderLinks
-  pages?: Pages
+  pages: Pages
   socialMedia?: SocialMedia
   subtitle: string
   title: string

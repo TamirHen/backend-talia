@@ -1,3 +1,5 @@
+@use "../global-vars";
+@use "../mixin";
 .cubes-container {
   display: flex;
   width: 80vw;
@@ -6,5 +8,23 @@
   .cubes-wrapper {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .add-cube {
+    cursor: pointer;
+    width: global-vars.$cube-size;
+    height: global-vars.$cube-size;
+    padding: global-vars.$cube-padding;
+    margin: global-vars.$cube-margin;
+    border-radius: global-vars.$cube-border-radius;
+    border: global-vars.$cube-border;
+    @include mixin.flex-center;
+    font-size: 100px;
+    background: rgba(global-vars.$purple, .4);
+    transition: transform 200ms linear;
+
+    &:hover {
+      transform: scale(.9);
+    }
   }
 }

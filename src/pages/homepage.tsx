@@ -17,11 +17,12 @@ const Homepage = () => {
       <section>
         <h1 className='page-title'>Database</h1>
         <ul className='page-list'>
-          {Object.keys(database).map((key, index) => (
-            <li key={uuid()} className='db-object'>
-              <Link to={`/${key}`}>{key}</Link>
-            </li>
-          ))}
+          {database &&
+            Object.keys(database).map((key) => (
+              <li key={uuid()} className='db-object'>
+                <Link to={`/${key}`}>{key}</Link>
+              </li>
+            ))}
         </ul>
       </section>
       <section className={'inline-settings'}>

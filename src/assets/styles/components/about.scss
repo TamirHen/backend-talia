@@ -1,0 +1,26 @@
+.about-form {
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  input {
+    font-size: 22px;
+  }
+
+  .upload-cv-file {
+    font-size: initial;
+    padding: 7px 5px;
+  }
+
+  textarea {
+    width: 350px;
+    height: 200px;
+    font-size: 18px;
+    padding: 5px;
+  }
+}
