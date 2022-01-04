@@ -14,9 +14,43 @@
 
   .select-wrapper {
     @include mixin.flex-center;
-    height: 25%;
+    flex: 1;
   }
 
   select {
+    width: 150px;
+  }
+
+  .select-image-positions-wrapper {
+    flex: 2;
+    display: flex;
+
+    .select-image-position {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin: 0 5px;
+
+      h4 {
+        flex: 1;
+        align-self: center;
+      }
+
+      .select-coordinates-container {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+
+
+        .select-coordinates-wrapper {
+          flex: 1;
+          .select-coordinates {
+            width: 50%;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,9 +1,14 @@
 import React, { ChangeEvent, useContext, useState } from 'react'
 import '../assets/styles/components/image.scss'
-import { updateDB, uploadImage } from '../utils/firebase/Firebase'
 import { DataContext } from '../providers/DataProvider'
-import { Cube, Grid, Image as ImageInterface } from '../common/types'
+import {
+  Cube,
+  Grid,
+  Image as ImageInterface,
+  ImagePosition,
+} from '../common/types'
 import { v4 as uuid } from 'uuid'
+import { Resolution } from '../common/enums'
 
 interface ImageProps {
   image: ImageInterface
@@ -19,15 +24,27 @@ export const Image = (props: ImageProps) => {
   const [selectedCube, setSelectedCube] = useState<Cube | undefined>(
     cube || undefined
   )
+  const [updatedImage, setUpdatedImage] = useState<ImageInterface>(image)
 
   const onOptionSelectedHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedCube(cubes.find((cube) => cube.id === event.target.value))
   }
 
+  const onPositionSelectedHandler = (
+    event: ChangeEvent<HTMLSelectElement>
+  ): void => {
+    const newValue = Number(event.target.value)
+    const [resolution, position] = event.target.name.split('-')
+    updatedImage[resolution as Resolution][position as keyof ImagePosition] =
+      newValue
+    setUpdatedImage(updatedImage)
+    console.log(updatedImage)
+  }
+
   return (
     <div
       className={'image-card'}
-      style={{ backgroundImage: `url(${cube?.image})` }}
+      style={{ backgroundImage: `url(${selectedCube?.image})` }}
     >
       <div className='select-wrapper'>
         <select
@@ -41,7 +58,94 @@ export const Image = (props: ImageProps) => {
             </option>
           ))}
         </select>
-        <div className={'position-picker-wrapper'}></div>
+      </div>
+      <div className={'select-image-positions-wrapper'}>
+        <SelectImagePosition
+          grid={grid}
+          resolution={Resolution.desktop}
+          onPositionSelectedHandler={onPositionSelectedHandler}
+          imagePosition={image.desktop}
+        />
+        <SelectImagePosition
+          grid={grid}
+          resolution={Resolution.tablet}
+          onPositionSelectedHandler={onPositionSelectedHandler}
+          imagePosition={image.tablet}
+        />
+        <SelectImagePosition
+          grid={grid}
+          resolution={Resolution.mobile}
+          onPositionSelectedHandler={onPositionSelectedHandler}
+          imagePosition={image.mobile}
+        />
+      </div>
+    </div>
+  )
+}
+
+interface SelectImagePositionProps {
+  grid: Grid
+  resolution: Resolution
+  onPositionSelectedHandler: (event: ChangeEvent<HTMLSelectElement>) => void
+  imagePosition: ImagePosition
+}
+
+function SelectImagePosition(props: SelectImagePositionProps) {
+  const { grid, resolution, onPositionSelectedHandler, imagePosition } = props
+  const createPositionOptions = (num: number) => (
+    <option key={uuid()} value={num + 1}>
+      {num + 1}
+    </option>
+  )
+
+  return (
+    <div className={'select-image-position'}>
+      <h4>{resolution}</h4>
+      <div className={'select-coordinates-container'}>
+        <div className={'select-coordinates-wrapper'}>
+          <select
+            className={'select-coordinates'}
+            name={`${resolution}-rowStart`}
+            onChange={onPositionSelectedHandler}
+            defaultValue={imagePosition.rowStart}
+          >
+            {Array.from(Array(grid[resolution].rows).keys()).map(
+              createPositionOptions
+            )}
+          </select>
+          <select
+            className={'select-coordinates'}
+            name={`${resolution}-columnStart`}
+            onChange={onPositionSelectedHandler}
+            defaultValue={imagePosition.columnStart}
+          >
+            {Array.from(Array(grid[resolution].columns).keys()).map(
+              createPositionOptions
+            )}
+          </select>
+        </div>
+        <div className={'select-coordinates-wrapper'}>
+          <select
+            className={'select-coordinates'}
+            name={`${resolution}-rowEnd`}
+            onChange={onPositionSelectedHandler}
+            defaultValue={imagePosition.rowEnd}
+          >
+            {Array.from(Array(grid[resolution].rows).keys()).map(
+              createPositionOptions
+            )}
+          </select>
+          <select
+            className={'select-coordinates'}
+            name={`${resolution}-columnEnd`}
+            onChange={onPositionSelectedHandler}
+            defaultValue={imagePosition.columnEnd}
+          >
+            {Array.from(Array(grid[resolution].columns).keys()).map(
+              createPositionOptions
+            )}
+          </select>
+        </div>
       </div>
     </div>
   )
