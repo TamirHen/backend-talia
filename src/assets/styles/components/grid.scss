@@ -1,0 +1,33 @@
+@use '../global-vars';
+
+.grid-section {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid global-vars.$purple;
+  width: 200px;
+  .grid-section-header {
+    font-size: 20px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  .grid-layout-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+    .field-wrapper {
+      width: 150px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2px;
+
+      input {
+        width: 60px;
+      }
+    }
+  }
+}

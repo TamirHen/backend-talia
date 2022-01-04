@@ -1,0 +1,22 @@
+@use "../global-vars";
+@use "../mixin";
+
+.image-card {
+  width: global-vars.$card-size;
+  height: global-vars.$card-size;
+  padding: global-vars.$card-padding;
+  margin: global-vars.$card-margin;
+  border-radius: global-vars.$card-border-radius;
+  border: global-vars.$card-border;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+
+  .select-wrapper {
+    @include mixin.flex-center;
+    height: 25%;
+  }
+
+  select {
+  }
+}

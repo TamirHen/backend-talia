@@ -72,6 +72,11 @@ export interface Home {
   sketchesImage: string
 }
 
+export interface Sketches {
+  grid: Grid
+  images: Image[]
+}
+
 export interface Pages {
   about: About
   animation?: {
@@ -83,10 +88,7 @@ export interface Pages {
   rigging?: {
     videos: Video[]
   }
-  sketches: {
-    grid: Grid
-    images: Image[]
-  }
+  sketches: Sketches
 }
 
 export interface About {

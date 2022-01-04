@@ -21,11 +21,9 @@ export const Container: FC<ContainerProps> = (props) => {
     (key) => cardsInitState[key as keyof HeaderLinks]
   )
   {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [cards, setCards] = useState(
       cardsAsArray.sort((card1, card2) => card1.order - card2.order)
     )
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const moveCard = useCallback(
       (dragIndex: number, hoverIndex: number) => {
         if (!cards) return
