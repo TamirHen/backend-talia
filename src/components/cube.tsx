@@ -31,14 +31,14 @@ export const Cube = (props: CubeInterface) => {
     event.preventDefault()
     const target = event.target as typeof event.target & CubeTarget
     if (!imageFile) {
-      setMessage('Could not find image to upload')
+      setMessage('Could not find images to upload')
       return
     }
     const snapshot = await uploadImage('cubes', imageFile, target.name.value)
     const imageUrl = await snapshot.ref.getDownloadURL()
 
     if (!imageUrl) {
-      setMessage('Could not upload image, please try again')
+      setMessage('Could not upload images, please try again')
       return
     }
     const newCube = {
@@ -58,7 +58,6 @@ export const Cube = (props: CubeInterface) => {
         cube.image = newCube.image
       }
     }
-    console.log(cubes)
     const message = await updateDB('/cubes', cubes)
     setMessage(message)
   }

@@ -3,30 +3,20 @@
 
 .sketches-container {
 
-  .sketches-form {
+  .sketches-section {
 
     display: flex;
     width: 90vw;
     flex-direction: column;
 
 
-    .form-header {
+    .section-header {
       margin-left: 150px;
       font-size: 30px;
     }
 
-    .update-button {
-      width: 200px;
-      align-self: center;
-    }
-
     .sketches-content {
       display: flex;
-      .image-cards-container {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: 20px;
-      }
     }
 
   }

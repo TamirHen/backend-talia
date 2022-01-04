@@ -45,7 +45,7 @@ const Home = () => {
       const snapshot = await uploadImage(
         'homepage',
         animationImage,
-        'animation-image'
+        'animation-images'
       )
       animationImageURL = await snapshot.ref.getDownloadURL()
       newSettings.animationImage = animationImageURL
@@ -54,7 +54,7 @@ const Home = () => {
       const snapshot = await uploadImage(
         'homepage',
         riggingImage,
-        'rigging-image'
+        'rigging-images'
       )
       riggingImageURL = await snapshot.ref.getDownloadURL()
       newSettings.riggingImage = riggingImageURL
@@ -63,7 +63,7 @@ const Home = () => {
       const snapshot = await uploadImage(
         'homepage',
         sketchesImage,
-        'sketches-image'
+        'sketches-images'
       )
       sketchesImageURL = await snapshot.ref.getDownloadURL()
       newSettings.sketchesImage = sketchesImageURL

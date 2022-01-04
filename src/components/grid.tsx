@@ -1,17 +1,78 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import '../assets/styles/components/grid.scss'
-import { Grid as GridInterface, GridLayout } from '../common/types'
+import {
+  Grid as GridInterface,
+  GridLayout,
+  Sketches as SketchesInterface,
+} from '../common/types'
 import { Resolution } from '../common/enums'
+import { updateDB } from '../utils/firebase/Firebase'
 
 interface GridProps {
   grid: GridInterface
-  setResolutionsLayout: (
+  dbPathToGrid: string
+}
+
+const Grid = ({ grid, dbPathToGrid }: GridProps) => {
+  const [message, setMessage] = useState<string>()
+  const [updatedGrid, setUpdatedGrid] = useState<GridInterface>(grid)
+
+  const setResolutionsLayout = (
     resolution: Resolution,
     unit: string,
     newValue: number
-  ) => void
-  onSubmitHandler: (event: React.SyntheticEvent) => Promise<void>
+  ) => {
+    updatedGrid[resolution][unit as keyof GridLayout] = newValue
+    setUpdatedGrid(updatedGrid)
+  }
+
+  const onSubmitHandler = async (
+    event: React.SyntheticEvent
+  ): Promise<void> => {
+    setMessage(undefined)
+    event.preventDefault()
+    const message = await updateDB(dbPathToGrid, updatedGrid)
+    setMessage(message)
+  }
+
+  return (
+    <form className={'grid-form'} onSubmit={onSubmitHandler}>
+      <h4 className={'grid-header'}>Grid Layout</h4>
+      {grid && (
+        <>
+          <GridLayoutInput
+            resolution={Resolution.desktop}
+            layout={grid.desktop}
+            setResolutionsLayout={setResolutionsLayout}
+          />
+          <GridLayoutInput
+            resolution={Resolution.tablet}
+            layout={grid.tablet}
+            setResolutionsLayout={setResolutionsLayout}
+          />
+          <GridLayoutInput
+            resolution={Resolution.mobile}
+            layout={grid.mobile}
+            setResolutionsLayout={setResolutionsLayout}
+          />
+        </>
+      )}
+      <button className={'update-button'} type={'submit'}>
+        Save
+      </button>
+      {message && (
+        <p
+          className={'message'}
+          style={{ color: message === 'saved' ? 'green' : 'red' }}
+        >
+          {message}
+        </p>
+      )}
+    </form>
+  )
 }
+
+export default Grid
 
 interface GridLayoutProps {
   resolution: Resolution
@@ -57,32 +118,3 @@ function GridLayoutInput({
     </div>
   )
 }
-
-const Grid = ({ grid, setResolutionsLayout, onSubmitHandler }: GridProps) => {
-  return (
-    <section className={'grid-section'} onSubmit={onSubmitHandler}>
-      <h4 className={'grid-section-header'}>Grid Layout</h4>
-      {grid && (
-        <>
-          <GridLayoutInput
-            resolution={Resolution.desktop}
-            layout={grid.desktop}
-            setResolutionsLayout={setResolutionsLayout}
-          />
-          <GridLayoutInput
-            resolution={Resolution.tablet}
-            layout={grid.tablet}
-            setResolutionsLayout={setResolutionsLayout}
-          />
-          <GridLayoutInput
-            resolution={Resolution.mobile}
-            layout={grid.mobile}
-            setResolutionsLayout={setResolutionsLayout}
-          />
-        </>
-      )}
-    </section>
-  )
-}
-
-export default Grid
