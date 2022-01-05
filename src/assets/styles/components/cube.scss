@@ -11,6 +11,7 @@
   border: global-vars.$cube-border;
   justify-content: space-between;
   background-size: cover;
+  position: relative;
 
   .cube-header {
     font-size: 24px;
@@ -21,8 +22,14 @@
 
   }
 
-  button {
+  .update-button {
     background: rgba(white, .8);
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 
   input {

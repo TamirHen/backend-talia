@@ -24,6 +24,22 @@ export const Cube = (props: CubeInterface) => {
     }
   }
 
+  const onDeleteHandler = async (): Promise<void> => {
+    setMessage(undefined)
+    if (cubes.length === 1) {
+      alert('Could not delete the last cube in the database')
+      return
+    }
+    // extract the images without the deleted one to a new array
+    const updatedCubes = cubes.filter(
+      (cube) => cube.id.toString() !== id.toString()
+    )
+
+    if (confirm('Are you sure you would like to delete this cube?')) {
+      await updateDB('/cubes', updatedCubes)
+    }
+  }
+
   const onSubmitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ): Promise<void> => {
@@ -97,6 +113,13 @@ export const Cube = (props: CubeInterface) => {
       </div>
       <button className={'update-button'} type={'submit'}>
         Save
+      </button>
+      <button
+        className={'delete-button'}
+        type={'button'}
+        onClick={onDeleteHandler}
+      >
+        Delete
       </button>
       {message && (
         <p

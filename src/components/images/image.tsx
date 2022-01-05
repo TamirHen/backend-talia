@@ -33,14 +33,16 @@ export const Image = (props: ImageProps) => {
 
   const [message, setMessage] = useState<string>()
   const [updatedImage, setUpdatedImage] = useState<ImageInterface>(image)
-  const [selectedCube, setSelectedCube] = useState<Cube>(
-    (): Cube => cubes.find((cube) => cube.id === image.cubeId) as Cube
+  const [selectedCube, setSelectedCube] = useState<Cube | undefined>(
+    (): Cube => cubes?.find((cube) => cube.id === image.cubeId) as Cube
   )
   const [cardKey, setCardKey] = useState<string>(uuid())
 
   const onCubeSelectedHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     setMessage(undefined)
-    const newCube = cubes.find((cube) => cube.id === event.target.value) as Cube
+    const newCube = cubes?.find(
+      (cube) => cube.id === event.target.value
+    ) as Cube
     setSelectedCube(newCube)
     updatedImage.cubeId = newCube.id
     setUpdatedImage(updatedImage)
@@ -103,11 +105,12 @@ export const Image = (props: ImageProps) => {
           onChange={onCubeSelectedHandler}
           value={selectedCube?.id}
         >
-          {cubes.map((cube) => (
-            <option key={uuid()} value={cube.id}>
-              {cube.name}
-            </option>
-          ))}
+          {cubes &&
+            cubes.map((cube) => (
+              <option key={uuid()} value={cube.id}>
+                {cube.name}
+              </option>
+            ))}
         </select>
       </div>
       <div className={'select-image-positions-wrapper'}>

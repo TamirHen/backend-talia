@@ -58,15 +58,16 @@ const Images = (props: ImagesProps) => {
           +
         </div>
       }
-      {images.map((image) => (
-        <Image
-          key={uuid()}
-          image={image}
-          images={images}
-          grid={grid}
-          dbPathToImages={dbPathToImages}
-        />
-      ))}
+      {images &&
+        images.map((image) => (
+          <Image
+            key={uuid()}
+            image={image}
+            images={images}
+            grid={grid}
+            dbPathToImages={dbPathToImages}
+          />
+        ))}
     </div>
   )
 }
