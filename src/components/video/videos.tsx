@@ -7,7 +7,6 @@ import { Video } from '../../common/types'
 import { Link, useLocation } from 'react-router-dom'
 
 interface VideosParams {
-  dbPathToVideos: string
   videos: Video[] | undefined
 }
 
@@ -20,9 +19,7 @@ const Videos = (props: VideosParams) => {
       {videos &&
         videos.map((video) => (
           <button className={'video-button'} key={uuid()}>
-            <Link to={`${location.pathname}/${video.videoId}`}>
-              {video.title}
-            </Link>
+            <Link to={`${location.pathname}/${video.id}`}>{video.title}</Link>
           </button>
         ))}
     </div>

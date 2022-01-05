@@ -56,6 +56,7 @@ export interface Video {
   projectPage: ProjectPage
   title: string
   videoId: string
+  id: string
 }
 
 export interface Contact {

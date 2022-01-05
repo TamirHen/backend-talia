@@ -41,16 +41,29 @@ const Pages = () => {
           <Route path={'/sketches'} element={<Sketches />} />
           <Route
             path={'/animation'}
+            element={<Videos videos={pages.animation?.videos} />}
+          />
+          <Route
+            path={'/animation/:id'}
             element={
-              <Videos
-                dbPathToVideos={'/pages/animation/videos'}
+              <Video
                 videos={pages.animation?.videos}
+                dbPathToVideos={'/pages/animation/videos'}
               />
             }
           />
           <Route
-            path={'/animation/:videoId'}
-            element={<Video videos={pages.animation?.videos} />}
+            path={'/rigging'}
+            element={<Videos videos={pages.rigging?.videos} />}
+          />
+          <Route
+            path={'/rigging/:id'}
+            element={
+              <Video
+                videos={pages.rigging?.videos}
+                dbPathToVideos={'/pages/rigging/videos'}
+              />
+            }
           />
         </Routes>
       </section>
