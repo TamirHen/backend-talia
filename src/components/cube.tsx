@@ -25,7 +25,7 @@ export const Cube = (props: CubeInterface) => {
   }
 
   const onSubmitHandler = async (
-    event: React.SyntheticEvent
+    event: React.SyntheticEvent<HTMLFormElement>
   ): Promise<void> => {
     setMessage(undefined)
     event.preventDefault()

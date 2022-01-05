@@ -1,4 +1,10 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
+import React, {
+  ChangeEvent,
+  EventHandler,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import '../../assets/styles/components/images/image.scss'
 import { DataContext } from '../../providers/DataProvider'
 import {
@@ -10,15 +16,17 @@ import {
 import { v4 as uuid } from 'uuid'
 import { Resolution } from '../../common/enums'
 import { SelectImagePosition } from './selectImagePosition'
-import { updateDB } from '../../utils/firebase/Firebase'
+import { updateDB, uploadImage } from '../../utils/firebase/Firebase'
 
 interface ImageProps {
   image: ImageInterface
+  images: ImageInterface[]
   grid: Grid
+  dbPathToImages: string
 }
 
 export const Image = (props: ImageProps) => {
-  const { image, grid } = props
+  const { image, images, grid, dbPathToImages } = props
   const {
     database: { cubes },
   } = useContext(DataContext)
@@ -31,14 +39,17 @@ export const Image = (props: ImageProps) => {
   const [cardKey, setCardKey] = useState<string>(uuid())
 
   const onCubeSelectedHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    setMessage(undefined)
     const newCube = cubes.find((cube) => cube.id === event.target.value) as Cube
     setSelectedCube(newCube)
     updatedImage.cubeId = newCube.id
+    setUpdatedImage(updatedImage)
   }
 
   const onPositionSelectedHandler = (
     event: ChangeEvent<HTMLSelectElement>
   ): void => {
+    setMessage(undefined)
     const newValue = Number(event.target.value)
     const [resolution, position] = event.target.name.split('-')
     updatedImage[resolution as Resolution][position as keyof ImagePosition] =
@@ -47,12 +58,34 @@ export const Image = (props: ImageProps) => {
     rerenderCard()
   }
 
+  const onDeleteHandler = async (): Promise<void> => {
+    setMessage(undefined)
+
+    // extract the images without the deleted one to a new array
+    const updatedImages = images.filter(
+      (image) => image.id.toString() !== updatedImage.id.toString()
+    )
+    if (confirm('Are you sure you would like to delete this image?')) {
+      await updateDB(dbPathToImages, updatedImages)
+    }
+  }
+
   const onSubmitHandler = async (
     event: React.SyntheticEvent<HTMLFormElement>
   ): Promise<void> => {
+    setMessage(undefined)
     event.preventDefault()
-    const message = await updateDB('/cubes', cubes)
-    setMessage(message)
+
+    for (const image of images) {
+      if (image.id.toString() === updatedImage.id.toString()) {
+        image.cubeId = updatedImage.cubeId
+        image.desktop = updatedImage.desktop
+        image.tablet = updatedImage.tablet
+        image.mobile = updatedImage.mobile
+      }
+    }
+    const message = await updateDB(dbPathToImages, images)
+    alert(message)
   }
 
   const rerenderCard = () => setCardKey(uuid())
@@ -100,6 +133,13 @@ export const Image = (props: ImageProps) => {
       <div className={'submit-wrapper'}>
         <button className={'update-button'} type={'submit'}>
           Save
+        </button>
+        <button
+          className={'delete-button'}
+          type={'button'}
+          onClick={onDeleteHandler}
+        >
+          Delete
         </button>
         {message && (
           <p

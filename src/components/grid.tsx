@@ -1,10 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
 import '../assets/styles/components/grid.scss'
-import {
-  Grid as GridInterface,
-  GridLayout,
-  Sketches as SketchesInterface,
-} from '../common/types'
+import { Grid as GridInterface, GridLayout } from '../common/types'
 import { Resolution } from '../common/enums'
 import { updateDB } from '../utils/firebase/Firebase'
 
@@ -36,39 +32,41 @@ const Grid = ({ grid, dbPathToGrid }: GridProps) => {
   }
 
   return (
-    <form className={'grid-form'} onSubmit={onSubmitHandler}>
-      <h4 className={'grid-header'}>Grid Layout</h4>
-      {grid && (
-        <>
-          <GridLayoutInput
-            resolution={Resolution.desktop}
-            layout={grid.desktop}
-            setResolutionsLayout={setResolutionsLayout}
-          />
-          <GridLayoutInput
-            resolution={Resolution.tablet}
-            layout={grid.tablet}
-            setResolutionsLayout={setResolutionsLayout}
-          />
-          <GridLayoutInput
-            resolution={Resolution.mobile}
-            layout={grid.mobile}
-            setResolutionsLayout={setResolutionsLayout}
-          />
-        </>
-      )}
-      <button className={'update-button'} type={'submit'}>
-        Save
-      </button>
-      {message && (
-        <p
-          className={'message'}
-          style={{ color: message === 'saved' ? 'green' : 'red' }}
-        >
-          {message}
-        </p>
-      )}
-    </form>
+    <div className={'grid-form-wrapper'}>
+      <form className={'grid-form'} onSubmit={onSubmitHandler}>
+        <h4 className={'grid-header'}>Grid Layout</h4>
+        {grid && (
+          <>
+            <GridLayoutInput
+              resolution={Resolution.desktop}
+              layout={grid.desktop}
+              setResolutionsLayout={setResolutionsLayout}
+            />
+            <GridLayoutInput
+              resolution={Resolution.tablet}
+              layout={grid.tablet}
+              setResolutionsLayout={setResolutionsLayout}
+            />
+            <GridLayoutInput
+              resolution={Resolution.mobile}
+              layout={grid.mobile}
+              setResolutionsLayout={setResolutionsLayout}
+            />
+          </>
+        )}
+        <button className={'update-button'} type={'submit'}>
+          Save
+        </button>
+        {message && (
+          <p
+            className={'message'}
+            style={{ color: message === 'saved' ? 'green' : 'red' }}
+          >
+            {message}
+          </p>
+        )}
+      </form>{' '}
+    </div>
   )
 }
 

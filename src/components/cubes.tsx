@@ -11,9 +11,7 @@ const Cubes = () => {
   } = useContext(DataContext)
 
   const [key, setKey] = useState<string>(uuid())
-  const rerenderCubes = () => {
-    setKey(uuid())
-  }
+  const rerenderCubes = () => setKey(uuid())
 
   const onAddCubeHandler = async () => {
     const newCube = {

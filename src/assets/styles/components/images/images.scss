@@ -1,5 +1,26 @@
+@use "../../global-vars";
+@use "../../mixin";
+
 .image-cards-container {
   display: flex;
   flex-wrap: wrap;
   margin-left: 20px;
+
+  .add-image {
+    cursor: pointer;
+    width: global-vars.$card-size;
+    height: global-vars.$card-size;
+    padding: global-vars.$card-padding;
+    margin: global-vars.$card-margin;
+    border-radius: global-vars.$card-border-radius;
+    border: global-vars.$card-border;
+    @include mixin.flex-center;
+    font-size: 100px;
+    background: rgba(global-vars.$purple, .4);
+    transition: transform 200ms linear;
+
+    &:hover {
+      transform: scale(.9);
+    }
+  }
 }

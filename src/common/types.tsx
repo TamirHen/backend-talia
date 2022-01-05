@@ -38,6 +38,7 @@ export interface ImagePosition {
 }
 
 export interface Image {
+  id: string
   cubeId: string
   desktop: ImagePosition
   tablet: ImagePosition

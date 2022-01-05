@@ -43,6 +43,7 @@ const defaultState = {
         },
         images: [
           {
+            id: '',
             cubeId: '',
             desktop: {
               columnEnd: 0,

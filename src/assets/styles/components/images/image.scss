@@ -29,12 +29,24 @@
   .submit-wrapper {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     .update-button {
       margin: 0;
       background: #E8D9EC;
+    }
+
+    .delete-button {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .message {
+      margin-top: 5px;
     }
   }
 }
