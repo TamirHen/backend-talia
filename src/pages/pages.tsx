@@ -8,6 +8,8 @@ import Contact from '../components/contact'
 import DemoReel from '../components/demoReel'
 import Home from '../components/home'
 import Sketches from '../components/sketches'
+import Videos from '../components/video/videos'
+import Video from '../components/video/video'
 
 const Pages = () => {
   const {
@@ -37,6 +39,19 @@ const Pages = () => {
           <Route path={'/demoReel'} element={<DemoReel />} />
           <Route path={'/home'} element={<Home />} />
           <Route path={'/sketches'} element={<Sketches />} />
+          <Route
+            path={'/animation'}
+            element={
+              <Videos
+                dbPathToVideos={'/pages/animation/videos'}
+                videos={pages.animation?.videos}
+              />
+            }
+          />
+          <Route
+            path={'/animation/:videoId'}
+            element={<Video videos={pages.animation?.videos} />}
+          />
         </Routes>
       </section>
     </div>

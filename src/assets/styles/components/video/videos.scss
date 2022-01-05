@@ -1,0 +1,14 @@
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .video-button {
+    margin: 10px;
+
+    a {
+      &:hover {
+        color: unset;
+      }
+    }
+  }
+}
