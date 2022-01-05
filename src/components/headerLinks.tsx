@@ -11,7 +11,6 @@ const HeaderLinks = () => {
   } = useContext(DataContext)
 
   const [cardsArrayNewOrder, setCardsArrayNewOrder] = useState<HeaderLink[]>()
-  console.log(cardsArrayNewOrder)
   const [message, setMessage] = useState<string>()
 
   const onSubmitHandler = async (event: React.SyntheticEvent) => {

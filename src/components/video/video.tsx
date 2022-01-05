@@ -2,19 +2,20 @@ import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
 import '../../assets/styles/components/video/video.scss'
 import { updateDB } from '../../utils/firebase/Firebase'
 import { Video as VideoInterface } from '../../common/types'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
 interface VideoParams {
   videos: VideoInterface[] | undefined
   dbPathToVideos: string
+  redirectTo: string
 }
 
 const Video = (props: VideoParams) => {
-  const { videos, dbPathToVideos } = props
+  const { videos, dbPathToVideos, redirectTo } = props
 
   const urlParams = useParams()
-
+  const navigate = useNavigate()
   const [message, setMessage] = useState<string>()
   const video: VideoInterface | undefined = videos?.find(
     (video) => video.id.toString() === urlParams.id?.toString()
@@ -75,9 +76,36 @@ const Video = (props: VideoParams) => {
     setMessage(message)
   }
 
+  const onDeleteHandler = async (): Promise<void> => {
+    setMessage(undefined)
+    if (!videos || !video) {
+      alert('Could not find video to delete')
+      return
+    }
+    if (videos.length === 1) {
+      alert('Could not delete the last video in the database')
+      return
+    }
+    // extract the videos without the deleted one to a new array
+    const updatedVideos: VideoInterface[] = videos.filter(
+      (dbVideo) => dbVideo.id.toString() !== video.id.toString()
+    )
+    if (confirm('Are you sure you would like to delete this video?')) {
+      await updateDB(dbPathToVideos, updatedVideos)
+      navigate(redirectTo)
+    }
+  }
+
   return (
     <form className={'video-form'} onSubmit={onSubmitHandler}>
       <h4 className={'video-form-header form-header'}>{video?.title}</h4>
+      <button
+        className={'delete-button'}
+        type={'button'}
+        onClick={onDeleteHandler}
+      >
+        Delete
+      </button>
       <label htmlFor='title'>Title</label>
       <input name={'title'} value={title} onChange={onTitleChangeHandler} />
       <label htmlFor='videoId'>Video ID</label>

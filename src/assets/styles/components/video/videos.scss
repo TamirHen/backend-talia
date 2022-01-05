@@ -2,8 +2,16 @@
   display: flex;
   flex-wrap: wrap;
 
-  .video-button {
+  .add-video {
+    height: fit-content;
+  }
+
+  .video-button, .add-video {
     margin: 10px;
+    font-size: 20px;
+    padding-right: 12px;
+    padding-left: 12px;
+
 
     a {
       &:hover {

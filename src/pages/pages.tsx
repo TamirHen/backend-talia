@@ -41,7 +41,12 @@ const Pages = () => {
           <Route path={'/sketches'} element={<Sketches />} />
           <Route
             path={'/animation'}
-            element={<Videos videos={pages.animation?.videos} />}
+            element={
+              <Videos
+                videos={pages.animation?.videos}
+                dbPathToVideos={'/pages/animation/videos'}
+              />
+            }
           />
           <Route
             path={'/animation/:id'}
@@ -49,12 +54,18 @@ const Pages = () => {
               <Video
                 videos={pages.animation?.videos}
                 dbPathToVideos={'/pages/animation/videos'}
+                redirectTo={'/pages/animation'}
               />
             }
           />
           <Route
             path={'/rigging'}
-            element={<Videos videos={pages.rigging?.videos} />}
+            element={
+              <Videos
+                videos={pages.rigging?.videos}
+                dbPathToVideos={'/pages/rigging/videos'}
+              />
+            }
           />
           <Route
             path={'/rigging/:id'}
@@ -62,6 +73,7 @@ const Pages = () => {
               <Video
                 videos={pages.rigging?.videos}
                 dbPathToVideos={'/pages/rigging/videos'}
+                redirectTo={'/pages/rigging'}
               />
             }
           />
