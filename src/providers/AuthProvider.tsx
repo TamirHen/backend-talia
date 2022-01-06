@@ -1,16 +1,17 @@
 import React, { Component, createContext } from 'react'
 import firebase from 'firebase/app'
 import { auth, provider } from '../utils/firebase/Firebase'
+import config from '../config.json'
 
 interface AuthProviderInterface {
   user: firebase.User | null
   token: string | undefined
-  loginWithPopup: () => Promise<void>
+  loginWithPopup: (() => Promise<void>) | undefined
 }
 const defaultValue = {
   user: null,
   token: undefined,
-  loginWithPopup: async () => {},
+  loginWithPopup: undefined,
 }
 export const AuthContext: React.Context<AuthProviderInterface> =
   createContext<AuthProviderInterface>(defaultValue)
@@ -30,6 +31,10 @@ class AuthProvider extends Component {
       result = await auth.signInWithPopup(provider)
       const credential = result.credential as firebase.auth.OAuthCredential
       const token = credential.accessToken
+      if (!config.authorizedUsers.includes(result.user?.email as string)) {
+        alert('User not authorized')
+        throw 'User not authorized'
+      }
       this.setState({
         user: result.user,
         token: token,
@@ -38,8 +43,6 @@ class AuthProvider extends Component {
       console.error(error)
     }
   }
-
-  componentDidMount = async () => {}
 
   render() {
     return (

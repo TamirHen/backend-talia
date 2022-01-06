@@ -9,12 +9,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 interface VideosParams {
   videos: Video[] | undefined
   dbPathToVideos: string
+  title: string
 }
 
 const Videos = (props: VideosParams) => {
-  const { videos, dbPathToVideos } = props
+  const { videos, dbPathToVideos, title } = props
   const location = useLocation()
-  const navigate = useNavigate()
   const {
     database: { cubes },
   } = useContext(DataContext)
@@ -28,9 +28,9 @@ const Videos = (props: VideosParams) => {
         subtitle: '',
         description: '',
         grid: {
-          desktop: { rows: 0, columns: 0 },
-          tablet: { rows: 0, columns: 0 },
-          mobile: { rows: 0, columns: 0 },
+          desktop: { rows: 1, columns: 1 },
+          tablet: { rows: 1, columns: 1 },
+          mobile: { rows: 1, columns: 1 },
         },
         images: [
           {
@@ -60,23 +60,26 @@ const Videos = (props: VideosParams) => {
     }
     if (videos) {
       videos.unshift(newVideo)
+      await updateDB(dbPathToVideos, videos)
     } else {
       await updateDB(dbPathToVideos, [newVideo])
     }
-    navigate(`${location.pathname}/${newVideo.id}`)
   }
 
   return (
     <div className={'videos-container'}>
-      <button onClick={onAddCubeHandler} className={'add-video'}>
-        +
-      </button>
-      {videos &&
-        videos.map((video) => (
-          <button className={'video-button'} key={uuid()}>
-            <Link to={`${location.pathname}/${video.id}`}>{video.title}</Link>
-          </button>
-        ))}
+      <h5 className='form-header'>{title}</h5>
+      <div className={'videos-wrapper'}>
+        <button onClick={onAddCubeHandler} className={'add-video'}>
+          +
+        </button>
+        {videos &&
+          videos.map((video) => (
+            <button className={'video-button'} key={uuid()}>
+              <Link to={`${location.pathname}/${video.id}`}>{video.title}</Link>
+            </button>
+          ))}
+      </div>
     </div>
   )
 }

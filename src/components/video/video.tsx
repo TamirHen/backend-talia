@@ -4,6 +4,9 @@ import { updateDB } from '../../utils/firebase/Firebase'
 import { Video as VideoInterface } from '../../common/types'
 import { useNavigate, useParams } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import Grid from '../grid'
+import Images from '../images/images'
+import { ImagesGridSettings } from '../images/imagesGridSettings'
 
 interface VideoParams {
   videos: VideoInterface[] | undefined
@@ -17,9 +20,16 @@ const Video = (props: VideoParams) => {
   const urlParams = useParams()
   const navigate = useNavigate()
   const [message, setMessage] = useState<string>()
-  const video: VideoInterface | undefined = videos?.find(
-    (video) => video.id.toString() === urlParams.id?.toString()
-  )
+  let videoIndex
+  const video: VideoInterface | undefined = videos?.find((video, index) => {
+    if (video.id.toString() === urlParams.id?.toString()) {
+      videoIndex = index
+      return true
+    }
+    return false
+  })
+  const grid = video?.projectPage.grid
+  const images = video?.projectPage.images
   const [title, setTitle] = useState<string>(video?.title || '')
   const [videoId, setVideoId] = useState<string>(video?.videoId || '')
   const [subtitle, setSubtitle] = useState<string>(
@@ -95,50 +105,79 @@ const Video = (props: VideoParams) => {
       navigate(redirectTo)
     }
   }
-
   return (
-    <form className={'video-form'} onSubmit={onSubmitHandler}>
-      <h4 className={'video-form-header form-header'}>{video?.title}</h4>
-      <button
-        className={'delete-button'}
-        type={'button'}
-        onClick={onDeleteHandler}
-      >
-        Delete
-      </button>
-      <label htmlFor='title'>Title</label>
-      <input name={'title'} value={title} onChange={onTitleChangeHandler} />
-      <label htmlFor='videoId'>Video ID</label>
-      <input
-        name={'videoId'}
-        value={videoId}
-        onChange={onVideoIdChangeHandler}
-      />
-      <label htmlFor={'subtitle'}>Subtitle</label>
-      <input
-        name={'subtitle'}
-        value={subtitle}
-        onChange={onSubtitleChangeHandler}
-      />
-      <label htmlFor='description'>Description</label>
-      <textarea
-        name='description'
-        value={description}
-        onChange={onDescriptionChangeHandler}
-      />
-
-      <button className={'update-button'} type={'submit'}>
-        Save
-      </button>
-      {message && (
-        <p
-          className={'message'}
-          style={{ color: message === 'saved' ? 'green' : 'red' }}
-        >
-          {message}
-        </p>
+    <div className={'video-container'}>
+      <div className='form-wrapper'>
+        <div className='header-wrapper'>
+          <h4 className={'video-form-header form-header'}>{video?.title}</h4>
+          <button
+            className={'delete-button'}
+            type={'button'}
+            onClick={onDeleteHandler}
+          >
+            Delete Video
+          </button>
+        </div>
+        <form className={'video-form'} onSubmit={onSubmitHandler}>
+          <div className='field-group'>
+            <div className='form-field'>
+              <label htmlFor='videoId'>Video ID</label>
+              <input
+                name={'videoId'}
+                value={videoId}
+                onChange={onVideoIdChangeHandler}
+              />
+            </div>
+            <div className='form-field'>
+              <label htmlFor='title'>Title</label>
+              <input
+                name={'title'}
+                value={title}
+                onChange={onTitleChangeHandler}
+              />
+            </div>
+            <div className='form-field'>
+              <label htmlFor={'subtitle'}>Subtitle</label>
+              <input
+                name={'subtitle'}
+                value={subtitle}
+                onChange={onSubtitleChangeHandler}
+              />
+            </div>
+          </div>
+          <div className='field-group'>
+            <div className='form-field'>
+              <label htmlFor='description'>Description</label>
+              <textarea
+                name='description'
+                value={description}
+                onChange={onDescriptionChangeHandler}
+              />
+            </div>
+          </div>
+          <div className={'submit-wrapper'}>
+            <button className={'update-button'} type={'submit'}>
+              Save
+            </button>
+            {message && (
+              <p
+                className={'message'}
+                style={{ color: message === 'saved' ? 'green' : 'red' }}
+              >
+                {message}
+              </p>
+            )}
+          </div>
+        </form>
+      </div>
+      {grid && (
+        <ImagesGridSettings
+          grid={grid}
+          images={images}
+          dbPath={`${dbPathToVideos}/${videoIndex}/projectPage`}
+        />
       )}
-    </form>
+    </div>
   )
 }
 

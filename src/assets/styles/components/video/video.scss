@@ -1,26 +1,68 @@
-.video-form {
+.video-container {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  font-size: 26px;
+  width: 85vw;
 
-  label {
-    font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+  .form-wrapper {
+
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .delete-button {
+        width: fit-content;
+        align-self: flex-end;
+        margin-top: 5px;
+      }
+
+      .video-form-header {
+      }
+    }
+
+    .video-form {
+      display: flex;
+      flex-direction: row;
+      font-size: 26px;
+      justify-content: center;
+      margin-bottom: 50px;
+      margin-top: 10px;
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        margin: 0 15px;
+
+        label {
+          font-size: 20px;
+          margin-top: 10px;
+          margin-bottom: 5px;
+        }
+
+        input, textarea {
+          font-size: 16px;
+        }
+
+        textarea {
+          height: 160px;
+          width: 300px;
+        }
+      }
+
+      .submit-wrapper {
+        align-self: flex-end;
+        text-align: center;
+        .update-button {
+          height: fit-content;
+          width: fit-content;
+          padding-right: 20px;
+          padding-left: 20px;
+          margin: 0 15px;
+        }
+      }
+
+    }
   }
 
-  input, textarea {
-    font-size: 16px;
-  }
-
-  textarea {
-    height: 150px;
-  }
-
-  .delete-button {
-    width: fit-content;
-    align-self: flex-end;
-    margin-top: 5px;
+  .video-project-page-images-grid {
   }
 }

@@ -81,13 +81,13 @@ export interface Sketches {
 
 export interface Pages {
   about: About
-  animation?: {
+  animation: {
     videos: Video[]
   }
   contact: Contact
   demoReel: DemoReel
   home: Home
-  rigging?: {
+  rigging: {
     videos: Video[]
   }
   sketches: Sketches

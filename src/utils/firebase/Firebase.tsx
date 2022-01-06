@@ -41,7 +41,7 @@ export const uploadImage = async (
     .put(image)
   uploadTask.on(
     firebase.storage.TaskEvent.STATE_CHANGED,
-    (snapshot) => {},
+    null,
     (error) => {
       console.error(error)
     },

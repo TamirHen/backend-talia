@@ -1,0 +1,16 @@
+@use '../../global-vars';
+
+.images-grid-settings {
+  display: flex;
+
+  .grid-wrapper {
+    min-width: 200px;
+    width: fit-content;
+    border-right: 1px solid global-vars.$purple;
+    background: global-vars.$background-color;
+
+  }
+
+  .images-wrapper {
+  }
+}

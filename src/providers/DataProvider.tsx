@@ -23,6 +23,108 @@ const defaultState = {
         description: '',
         cv: '',
       },
+      animation: {
+        videos: [
+          {
+            id: '',
+            projectPage: {
+              description: '',
+              grid: {
+                desktop: {
+                  columns: 1,
+                  rows: 1,
+                },
+                mobile: {
+                  columns: 1,
+                  rows: 1,
+                },
+                tablet: {
+                  columns: 1,
+                  rows: 1,
+                },
+              },
+              images: [
+                {
+                  cubeId: '',
+                  desktop: {
+                    columnEnd: 1,
+                    columnStart: 1,
+                    rowEnd: 1,
+                    rowStart: 1,
+                  },
+                  id: '',
+                  mobile: {
+                    columnEnd: 1,
+                    columnStart: 1,
+                    rowEnd: 1,
+                    rowStart: 1,
+                  },
+                  tablet: {
+                    columnEnd: 1,
+                    columnStart: 1,
+                    rowEnd: 1,
+                    rowStart: 1,
+                  },
+                },
+              ],
+              subtitle: '',
+            },
+            title: '',
+            videoId: '',
+          },
+        ],
+      },
+      rigging: {
+        videos: [
+          {
+            id: '',
+            projectPage: {
+              description: '',
+              grid: {
+                desktop: {
+                  columns: 1,
+                  rows: 1,
+                },
+                mobile: {
+                  columns: 1,
+                  rows: 1,
+                },
+                tablet: {
+                  columns: 1,
+                  rows: 1,
+                },
+              },
+              images: [
+                {
+                  cubeId: '',
+                  desktop: {
+                    columnEnd: 1,
+                    columnStart: 1,
+                    rowEnd: 1,
+                    rowStart: 1,
+                  },
+                  id: '',
+                  mobile: {
+                    columnEnd: 1,
+                    columnStart: 1,
+                    rowEnd: 1,
+                    rowStart: 1,
+                  },
+                  tablet: {
+                    columnEnd: 1,
+                    columnStart: 1,
+                    rowEnd: 1,
+                    rowStart: 1,
+                  },
+                },
+              ],
+              subtitle: '',
+            },
+            title: '',
+            videoId: '',
+          },
+        ],
+      },
       contact: {
         title: '',
         text: '',
@@ -37,9 +139,9 @@ const defaultState = {
       },
       sketches: {
         grid: {
-          desktop: { rows: 0, columns: 0 },
-          tablet: { rows: 0, columns: 0 },
-          mobile: { rows: 0, columns: 0 },
+          desktop: { rows: 1, columns: 1 },
+          tablet: { rows: 1, columns: 1 },
+          mobile: { rows: 1, columns: 1 },
         },
         images: [
           {

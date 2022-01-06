@@ -67,6 +67,7 @@ export const Image = (props: ImageProps) => {
     const updatedImages = images.filter(
       (image) => image.id.toString() !== updatedImage.id.toString()
     )
+    console.log(dbPathToImages)
     if (confirm('Are you sure you would like to delete this image?')) {
       await updateDB(dbPathToImages, updatedImages)
     }

@@ -21,6 +21,7 @@ const Cubes = () => {
     }
     if (cubes) {
       cubes.unshift(newCube)
+      await updateDB('/cubes', cubes)
     } else {
       await updateDB('/cubes', [newCube])
     }

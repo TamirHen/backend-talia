@@ -1,47 +1,39 @@
 @use '../global-vars';
 
-.grid-form-wrapper {
-  min-width: 200px;
-  border-right: 1px solid global-vars.$purple;
+.grid-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
 
-  .grid-form {
+  .grid-header {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  .update-button {
+    margin-top: 15px;
+    width: fit-content;
+  }
+
+  .grid-layout-input-wrapper {
     display: flex;
     flex-direction: column;
-    width: 190px;
-    position: fixed;
-    background: global-vars.$background-color;
+    margin: 10px;
 
-    .grid-header {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    h5 {
-      font-size: 18px;
-    }
-
-    .update-button {
-      margin-top: 15px;
-      width: fit-content;
-    }
-
-    .grid-layout-input-wrapper {
+    .field-wrapper {
+      width: 150px;
       display: flex;
-      flex-direction: column;
-      margin: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2px;
 
-      .field-wrapper {
-        width: 150px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 2px;
-
-        input {
-          width: 60px;
-        }
+      input {
+        width: 60px;
       }
     }
   }
-
 }

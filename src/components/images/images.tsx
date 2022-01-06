@@ -7,7 +7,7 @@ import { updateDB } from '../../utils/firebase/Firebase'
 import { DataContext } from '../../providers/DataProvider'
 
 interface ImagesProps {
-  images: ImageInterface[]
+  images?: ImageInterface[]
   grid: Grid
   dbPathToImages: string
 }
@@ -45,6 +45,7 @@ const Images = (props: ImagesProps) => {
     }
     if (images) {
       images.unshift(newImage)
+      await updateDB(dbPathToImages, images)
     } else {
       await updateDB(dbPathToImages, [newImage])
     }

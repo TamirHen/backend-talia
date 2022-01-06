@@ -32,41 +32,39 @@ const Grid = ({ grid, dbPathToGrid }: GridProps) => {
   }
 
   return (
-    <div className={'grid-form-wrapper'}>
-      <form className={'grid-form'} onSubmit={onSubmitHandler}>
-        <h4 className={'grid-header'}>Grid Layout</h4>
-        {grid && (
-          <>
-            <GridLayoutInput
-              resolution={Resolution.desktop}
-              layout={grid.desktop}
-              setResolutionsLayout={setResolutionsLayout}
-            />
-            <GridLayoutInput
-              resolution={Resolution.tablet}
-              layout={grid.tablet}
-              setResolutionsLayout={setResolutionsLayout}
-            />
-            <GridLayoutInput
-              resolution={Resolution.mobile}
-              layout={grid.mobile}
-              setResolutionsLayout={setResolutionsLayout}
-            />
-          </>
-        )}
-        <button className={'update-button'} type={'submit'}>
-          Save
-        </button>
-        {message && (
-          <p
-            className={'message'}
-            style={{ color: message === 'saved' ? 'green' : 'red' }}
-          >
-            {message}
-          </p>
-        )}
-      </form>{' '}
-    </div>
+    <form className={'grid-form'} onSubmit={onSubmitHandler}>
+      <h4 className={'grid-header'}>Grid Layout</h4>
+      {grid && (
+        <>
+          <GridLayoutInput
+            resolution={Resolution.desktop}
+            layout={grid.desktop}
+            setResolutionsLayout={setResolutionsLayout}
+          />
+          <GridLayoutInput
+            resolution={Resolution.tablet}
+            layout={grid.tablet}
+            setResolutionsLayout={setResolutionsLayout}
+          />
+          <GridLayoutInput
+            resolution={Resolution.mobile}
+            layout={grid.mobile}
+            setResolutionsLayout={setResolutionsLayout}
+          />
+        </>
+      )}
+      <button className={'update-button'} type={'submit'}>
+        Save
+      </button>
+      {message && (
+        <p
+          className={'message'}
+          style={{ color: message === 'saved' ? 'green' : 'red' }}
+        >
+          {message}
+        </p>
+      )}
+    </form>
   )
 }
 

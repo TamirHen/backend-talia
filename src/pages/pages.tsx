@@ -45,6 +45,7 @@ const Pages = () => {
               <Videos
                 videos={pages.animation?.videos}
                 dbPathToVideos={'/pages/animation/videos'}
+                title={'animation'}
               />
             }
           />
@@ -64,6 +65,7 @@ const Pages = () => {
               <Videos
                 videos={pages.rigging?.videos}
                 dbPathToVideos={'/pages/rigging/videos'}
+                title={'rigging'}
               />
             }
           />
