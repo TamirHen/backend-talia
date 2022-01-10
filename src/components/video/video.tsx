@@ -121,7 +121,7 @@ const Video = (props: VideoParams) => {
         <form className={'video-form'} onSubmit={onSubmitHandler}>
           <div className='field-group'>
             <div className='form-field'>
-              <label htmlFor='videoId'>Video ID</label>
+              <label htmlFor='videoId'>Vimeo ID</label>
               <input
                 name={'videoId'}
                 value={videoId}

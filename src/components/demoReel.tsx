@@ -31,7 +31,7 @@ const DemoReel = () => {
   return (
     <form className={'demo-reel-form'} onSubmit={onSubmitHandler}>
       <h4 className={'form-header'}>Demo Reel</h4>
-      <label htmlFor='videoId'>Video ID</label>
+      <label htmlFor='videoId'>Vimeo ID</label>
       <input name='videoId' defaultValue={demoReel.videoId || ''} />
       <button className={'update-button'} type={'submit'}>
         Save
