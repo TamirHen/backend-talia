@@ -18,12 +18,22 @@ const About = () => {
   } = useContext(DataContext)
   const [message, setMessage] = useState<string>()
   const [CVFile, setCVFile] = useState<File>()
+  const [profilePhoto, setProfilePhoto] = useState<File>()
 
   const onCVUploadHandler = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.currentTarget.files && event.currentTarget.files[0]) {
       setCVFile(event.currentTarget.files[0])
     }
   }
+
+  const onProfilePhotoUploadHandler = (
+    event: ChangeEvent<HTMLInputElement>
+  ) => {
+    if (event.currentTarget.files && event.currentTarget.files[0]) {
+      setProfilePhoto(event.currentTarget.files[0])
+    }
+  }
+
   const onSubmitHandler = async (
     event: React.SyntheticEvent
   ): Promise<void> => {
@@ -37,11 +47,22 @@ const About = () => {
       subtitle: target.subtitle.value.trim(),
       description: target.description.value.trim(),
       cv: about.cv,
+      photo: about.photo,
     }
+    const folderPath = 'about'
     if (CVFile) {
-      const snapshot = await uploadImage('CV', CVFile, 'CV- Talia Breuer')
+      const snapshot = await uploadImage(folderPath, CVFile, 'CV- Talia Breuer')
       fileURL = await snapshot.ref.getDownloadURL()
       newSettings.cv = fileURL
+    }
+    if (profilePhoto) {
+      const snapshot = await uploadImage(
+        folderPath,
+        profilePhoto,
+        'profile picture'
+      )
+      fileURL = await snapshot.ref.getDownloadURL()
+      newSettings.photo = fileURL
     }
 
     const message = await updateDB('pages/about', newSettings)
@@ -57,13 +78,21 @@ const About = () => {
       <input name={'subtitle'} defaultValue={about.subtitle || ''} />
       <label htmlFor='description'>Description</label>
       <textarea name='description' defaultValue={about.description || ''} />
-      <label htmlFor={'file'}>{`CV File:`}</label>
+      <label htmlFor={'cv-file'}>{`CV File:`}</label>
       <input
         onChange={onCVUploadHandler}
         type='file'
-        name='file'
-        className={'upload-cv-file'}
+        name='cv-file'
+        className={'upload-about-file'}
         accept='application/pdf, application/msword'
+      />
+      <label htmlFor={'photo-file'}>{`Photo:`}</label>
+      <input
+        onChange={onProfilePhotoUploadHandler}
+        type='file'
+        name='photo-file'
+        className={'upload-about-file'}
+        accept='image/png, image/jpeg, image/jpg, image/gif, image/*, video/mp4, video/x-m4v, video/*'
       />
       <button className={'update-button'} type={'submit'}>
         Save

@@ -98,6 +98,7 @@ export interface About {
   description: string
   subtitle: string
   title: string
+  photo: string
 }
 
 export interface HeaderLink {

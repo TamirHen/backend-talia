@@ -22,6 +22,7 @@ const defaultState = {
         subtitle: '',
         description: '',
         cv: '',
+        photo: '',
       },
       animation: {
         videos: [
