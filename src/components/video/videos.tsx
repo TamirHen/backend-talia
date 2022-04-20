@@ -23,6 +23,7 @@ const Videos = (props: VideosParams) => {
     const newVideo: Video = {
       id: uuid(),
       title: 'New Video',
+      position: 0,
       videoId: '',
       projectPage: {
         subtitle: '',
