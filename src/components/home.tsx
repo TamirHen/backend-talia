@@ -12,7 +12,7 @@ const Home = () => {
   } = useContext(DataContext)
   const [message, setMessage] = useState<string>()
   const [animationImage, setAnimationImage] = useState<File>()
-  const [riggingImage, setRiggingImage] = useState<File>()
+  const [shortFilmImage, setShortFilmImage] = useState<File>()
   const [sketchesImage, setSketchesImage] = useState<File>()
 
   const onAnimationImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,9 +20,9 @@ const Home = () => {
       setAnimationImage(event.currentTarget.files[0])
     }
   }
-  const onRiggingImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onShortFilmImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.currentTarget.files && event.currentTarget.files[0]) {
-      setRiggingImage(event.currentTarget.files[0])
+      setShortFilmImage(event.currentTarget.files[0])
     }
   }
   const onSketchesImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +38,7 @@ const Home = () => {
     event.preventDefault()
 
     let animationImageURL
-    let riggingImageURL
+    let shortFilmImageURL
     let sketchesImageURL
     const newSettings: HomeInterface = { ...home }
     if (animationImage) {
@@ -50,14 +50,14 @@ const Home = () => {
       animationImageURL = await snapshot.ref.getDownloadURL()
       newSettings.animationImage = animationImageURL
     }
-    if (riggingImage) {
+    if (shortFilmImage) {
       const snapshot = await uploadImage(
         'homepage',
-        riggingImage,
-        'rigging-images'
+        shortFilmImage,
+        'short-film-images'
       )
-      riggingImageURL = await snapshot.ref.getDownloadURL()
-      newSettings.riggingImage = riggingImageURL
+      shortFilmImageURL = await snapshot.ref.getDownloadURL()
+      newSettings.shortFilmImage = shortFilmImageURL
     }
     if (sketchesImage) {
       const snapshot = await uploadImage(
@@ -84,11 +84,11 @@ const Home = () => {
         className={'upload-image-file'}
         accept='image/png, image/jpeg, image/jpg, image/gif, image/*, video/mp4, video/x-m4v, video/*'
       />
-      <label htmlFor={'riggingImage'}>{`Rigging Image:`}</label>
+      <label htmlFor={'shortFilmImage'}>{`Short Film Image:`}</label>
       <input
-        onChange={onRiggingImageChange}
+        onChange={onShortFilmImageChange}
         type='file'
-        name='riggingImage'
+        name='shortFilmImage'
         className={'upload-image-file'}
         accept='image/png, image/jpeg, image/jpg, image/gif, image/*, video/mp4, video/x-m4v, video/*'
       />

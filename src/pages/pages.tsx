@@ -10,6 +10,7 @@ import Home from '../components/home'
 import Sketches from '../components/sketches'
 import Videos from '../components/video/videos'
 import Video from '../components/video/video'
+import ShortFilm from '../components/shortFilm'
 
 const Pages = () => {
   const {
@@ -39,6 +40,7 @@ const Pages = () => {
           <Route path={'/demoReel'} element={<DemoReel />} />
           <Route path={'/home'} element={<Home />} />
           <Route path={'/sketches'} element={<Sketches />} />
+          <Route path={'/shortFilm'} element={<ShortFilm />} />
           <Route
             path={'/animation'}
             element={
@@ -59,26 +61,26 @@ const Pages = () => {
               />
             }
           />
-          <Route
-            path={'/rigging'}
-            element={
-              <Videos
-                videos={pages.rigging?.videos}
-                dbPathToVideos={'/pages/rigging/videos'}
-                title={'rigging'}
-              />
-            }
-          />
-          <Route
-            path={'/rigging/:id'}
-            element={
-              <Video
-                videos={pages.rigging?.videos}
-                dbPathToVideos={'/pages/rigging/videos'}
-                redirectTo={'/pages/rigging'}
-              />
-            }
-          />
+          {/*<Route*/}
+          {/*  path={'/rigging'}*/}
+          {/*  element={*/}
+          {/*    <Videos*/}
+          {/*      videos={pages.rigging?.videos}*/}
+          {/*      dbPathToVideos={'/pages/rigging/videos'}*/}
+          {/*      title={'rigging'}*/}
+          {/*    />*/}
+          {/*  }*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={'/rigging/:id'}*/}
+          {/*  element={*/}
+          {/*    <Video*/}
+          {/*      videos={pages.rigging?.videos}*/}
+          {/*      dbPathToVideos={'/pages/rigging/videos'}*/}
+          {/*      redirectTo={'/pages/rigging'}*/}
+          {/*    />*/}
+          {/*  }*/}
+          {/*/>*/}
         </Routes>
       </section>
     </div>

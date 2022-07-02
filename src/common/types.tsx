@@ -70,7 +70,7 @@ export interface DemoReel {
 
 export interface Home {
   animationImage: string
-  riggingImage: string
+  shortFilmImage: string
   sketchesImage: string
 }
 
@@ -90,6 +90,7 @@ export interface Pages {
   rigging: {
     videos: Video[]
   }
+  shortFilm: ShortFilm
   sketches: Sketches
 }
 
@@ -99,6 +100,13 @@ export interface About {
   subtitle: string
   title: string
   photo: string
+}
+
+export interface ShortFilm {
+  text: string
+  subtitle: string
+  title: string
+  youtubeLink: string
 }
 
 export interface HeaderLink {
@@ -113,6 +121,7 @@ export interface HeaderLinks {
   demoReel: HeaderLink
   rigging: HeaderLink
   sketches: HeaderLink
+  shortFilm: HeaderLink
 }
 
 export interface Database {

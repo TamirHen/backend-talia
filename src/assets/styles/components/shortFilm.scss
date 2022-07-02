@@ -1,0 +1,21 @@
+.short-film-form {
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  input {
+    font-size: 22px;
+  }
+
+  textarea {
+    width: 350px;
+    height: 200px;
+    font-size: 18px;
+    padding: 5px;
+  }
+}

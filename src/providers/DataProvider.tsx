@@ -135,7 +135,7 @@ const defaultState = {
       },
       home: {
         animationImage: '',
-        riggingImage: '',
+        shortFilmImage: '',
         sketchesImage: '',
       },
       sketches: {
@@ -169,6 +169,12 @@ const defaultState = {
           },
         ],
       },
+      shortFilm: {
+        title: '',
+        subtitle: '',
+        text: '',
+        youtubeLink: '',
+      },
     },
     footerText: '',
     headerLinks: {
@@ -193,6 +199,10 @@ const defaultState = {
         order: 0,
       },
       sketches: {
+        name: '',
+        order: 0,
+      },
+      shortFilm: {
         name: '',
         order: 0,
       },
