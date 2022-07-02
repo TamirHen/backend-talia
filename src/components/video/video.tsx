@@ -32,6 +32,7 @@ const Video = (props: VideoParams) => {
   const images = video?.projectPage.images
   const [title, setTitle] = useState<string>(video?.title || '')
   const [videoId, setVideoId] = useState<string>(video?.videoId || '')
+  const [position, setPosition] = useState<number>(video?.position || 1)
   const [subtitle, setSubtitle] = useState<string>(
     video?.projectPage.subtitle || ''
   )
@@ -44,6 +45,9 @@ const Video = (props: VideoParams) => {
   }
   const onVideoIdChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setVideoId(event.currentTarget.value)
+  }
+  const onPositionChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setPosition(Number(event.currentTarget.value))
   }
   const onSubtitleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setSubtitle(event.currentTarget.value)
@@ -64,6 +68,7 @@ const Video = (props: VideoParams) => {
       return
     }
     video.title = title
+    video.position = position
     video.videoId = videoId
     video.projectPage.subtitle = subtitle
     video.projectPage.description = description
@@ -77,6 +82,7 @@ const Video = (props: VideoParams) => {
     for (const dbVideo of videos) {
       if (dbVideo.id.toString() === video.id.toString()) {
         dbVideo.title = video.title.trim()
+        dbVideo.position = video.position
         dbVideo.videoId = video.videoId.trim()
         dbVideo.projectPage.subtitle = video.projectPage.subtitle.trim()
         dbVideo.projectPage.description = video.projectPage.description.trim()
@@ -128,6 +134,17 @@ const Video = (props: VideoParams) => {
                 onChange={onVideoIdChangeHandler}
               />
             </div>
+            <div className='form-field'>
+              <label htmlFor='position'>Position</label>
+              <input
+                name={'position'}
+                value={position}
+                type='number'
+                onChange={onPositionChangeHandler}
+              />
+            </div>
+          </div>
+          <div className='field-group'>
             <div className='form-field'>
               <label htmlFor='title'>Title</label>
               <input
