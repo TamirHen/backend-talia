@@ -85,7 +85,7 @@ const Video = (props: VideoParams) => {
         dbVideo.position = video.position
         dbVideo.videoId = video.videoId.trim()
         dbVideo.projectPage.subtitle = video.projectPage.subtitle.trim()
-        dbVideo.projectPage.description = video.projectPage.description.trim()
+        dbVideo.projectPage.description = video.projectPage.description
       }
     }
     const message = await updateDB(dbPathToVideos, videos)

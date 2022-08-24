@@ -45,7 +45,7 @@ const About = () => {
     const newSettings: AboutInterface = {
       title: target.title.value.trim(),
       subtitle: target.subtitle.value.trim(),
-      description: target.description.value.trim(),
+      description: target.description.value,
       cv: about.cv,
       photo: about.photo,
     }
