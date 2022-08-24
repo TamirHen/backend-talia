@@ -61,26 +61,26 @@ const Pages = () => {
               />
             }
           />
-          {/*<Route*/}
-          {/*  path={'/rigging'}*/}
-          {/*  element={*/}
-          {/*    <Videos*/}
-          {/*      videos={pages.rigging?.videos}*/}
-          {/*      dbPathToVideos={'/pages/rigging/videos'}*/}
-          {/*      title={'rigging'}*/}
-          {/*    />*/}
-          {/*  }*/}
-          {/*/>*/}
-          {/*<Route*/}
-          {/*  path={'/rigging/:id'}*/}
-          {/*  element={*/}
-          {/*    <Video*/}
-          {/*      videos={pages.rigging?.videos}*/}
-          {/*      dbPathToVideos={'/pages/rigging/videos'}*/}
-          {/*      redirectTo={'/pages/rigging'}*/}
-          {/*    />*/}
-          {/*  }*/}
-          {/*/>*/}
+          <Route
+            path={'/rigging'}
+            element={
+              <Videos
+                videos={pages.rigging?.videos}
+                dbPathToVideos={'/pages/rigging/videos'}
+                title={'rigging'}
+              />
+            }
+          />
+          <Route
+            path={'/rigging/:id'}
+            element={
+              <Video
+                videos={pages.rigging?.videos}
+                dbPathToVideos={'/pages/rigging/videos'}
+                redirectTo={'/pages/rigging'}
+              />
+            }
+          />
         </Routes>
       </section>
     </div>
