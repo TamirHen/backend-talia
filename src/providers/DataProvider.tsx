@@ -138,7 +138,7 @@ const defaultState = {
       home: {
         animationImage: '',
         shortFilmImage: '',
-        sketchesImage: '',
+        riggingImage: '',
       },
       sketches: {
         grid: {

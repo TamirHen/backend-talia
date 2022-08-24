@@ -72,7 +72,7 @@ export interface DemoReel {
 export interface Home {
   animationImage: string
   shortFilmImage: string
-  sketchesImage: string
+  riggingImage: string
 }
 
 export interface Sketches {
